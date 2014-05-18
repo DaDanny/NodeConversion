@@ -1,0 +1,7 @@
+<div ng-include="'partials/navbar'"></div>
+<p>This is the Currency view.</p>
+
+<h1>Currencys</h1>
+<div ng-repeat = "currency in currencys |orderBy: currency.code">
+  {{currency.code}} : {{currency.conversion}}
+</div>
