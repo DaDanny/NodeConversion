@@ -6,7 +6,8 @@
     "lodash": "~2.4.1",
     "mongoose": "~3.8.8",
     "ejs": "~0.8.4",
-    "open-exchange-rates": "~0.2.0"
+    "open-exchange-rates": "~0.2.0",
+    "currencies": "0.0.2"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

@@ -1,7 +1,18 @@
 <div ng-include="'partials/navbar'"></div>
 <p>This is the Currency view.</p>
 
+
+
+<br>
+<br>
+<div>
+  Convert : <input type = "text" ng-model = "convertAmount" class = "form-control">
+  Currency Code: <input type="text" ng-model="convertFrom" placeholder="Custom template" typeahead="currency.code as currency.code for currency in currencys | filter:{code:$viewValue}" class="form-control">
+</div>
+
+  {{convertAmount}} in {{convertFrom}} to {{convertTo}} = {{converted}}
+
 <h1>Currencys</h1>
 <div ng-repeat = "currency in currencys |orderBy: currency.code">
-  {{currency.code}} : {{currency.conversion}}
+  {{currency.code}} : {{currency.symbol}} {{currency.conversion}} 
 </div>
