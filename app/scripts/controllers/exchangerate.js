@@ -7,6 +7,10 @@ angular.module('payPalNodeApp')
     $scope.currency2 = '';
     $scope.startExchange = false;
     $scope.showExchange = false;
+
+    /*
+    ** Get Latest Updated Rates
+    */
     $scope.getUpdated = function(){
       $scope.loading = true;
       $scope.showExchange = false;
@@ -21,7 +25,9 @@ angular.module('payPalNodeApp')
       });
     };
 
-    
+    /*
+    ** Load Rates from Local DB
+    */
     Currencyservice.fromDB()
         .then(function(data){
           $scope.currencys = data;
@@ -34,10 +40,10 @@ angular.module('payPalNodeApp')
       $scope.showExchange = false;
       $scope.startExchange = true;
     };
-    
+
     $scope.hide = function(){
       $scope.showExchange = false;
-    }
+    };
 
     $scope.convert = function(currency1,currency2){
       $scope.showExchange = true;
@@ -67,5 +73,5 @@ angular.module('payPalNodeApp')
       else{
         $scope.exchangeAmount = currency2.conversion * (1/currency1.conversion);
       }
-    }
+    };
   });

@@ -1,21 +1,16 @@
 <div ng-include="'partials/navbar'"></div>
 
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
+  <h1>Paypal Exchange</h1>
   <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
+    Using the OpenExchangeRates API
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
+  <p><a class="btn btn-lg btn-success" ng-href="/paypal/currencyConversion">Currency Conversion</a></p>
+  <p><a class="btn btn-lg btn-success" ng-href="/paypal/conversionRate">Conversion Rates</a></p>
+  <p><a class="btn btn-lg btn-success" ng-href="/paypal/activity">Transaction History</a></p>
+  <p><strong>By Danny Francken</strong></p>
+  <p>View on Github:</p>
+  <a href = "https://github.com/DaDanny/NodeConversion"><img src = "images/Github-Mark-32px.png"/></a>
 </div>
 
-<div class="row marketing">
-  <div ng-repeat="thing in awesomeThings">
-      <h4>{{thing.name}}</h4>
-      <p>{{thing.info}}</p>
-  </div>
-</div>
 
-<div class="footer">
-  <p>♥ from the Yeoman team</p>
-</div>

@@ -3,6 +3,17 @@
 angular.module('payPalNodeApp')
   .controller('TxnhistoryCtrl', function ($scope, $http, Txnservice,convertFilter, Currencyservice) {
     
+    $scope.getUpdated = function(){
+      $scope.loading = true;
+      Currencyservice.getConversion()
+        .then(function(data){
+          $scope.loading = false;
+          $scope.currencys = data;
+          $scope.updatedAt = new Date(data[0].updatedTime*1000);
+        },function(error){
+          $scope.currencys = 'failed';
+      });
+    };
     /*
     ** Function which will get Activity History
     ** From Server. Once it recieves data
@@ -11,7 +22,6 @@ angular.module('payPalNodeApp')
     Txnservice.getHistory()
       .then(function(data){
         $scope.txnHistory = data;
-        //$scope.gridOptions = {data:txnHistory};
       },function(error){
         $scope.txnHistory = 'failed';
       });
@@ -33,6 +43,7 @@ angular.module('payPalNodeApp')
     Currencyservice.fromDB()
         .then(function(data){
           $scope.currencys = data;
+          $scope.updatedAt = new Date(data[0].updatedTime*1000);
         },function(error){
           $scope.currencys = 'failed';
     });

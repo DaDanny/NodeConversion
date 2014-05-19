@@ -67,7 +67,7 @@ angular.module('payPalNodeApp')
     */
     $scope.hide = function(){
       $scope.showConversion = false;
-    }
+    };
 
     /*
     ** Takes in 2 currencies to convert with

@@ -1,4 +1,16 @@
 <div ng-include="'partials/navbar'"></div>
+
+<br>
+<div class = "span7 text-center">
+  <button class = "btn btn-success" ng-click = "getUpdated()">Latest Conversion Rates</button>
+  <button class = "btn btn-info" ng-click = "fromDB()">From Local Database </button>
+  <br>
+  <em>(Last Update: {{updatedAt | date: 'medium'}})</em>
+</div>
+
+
+
+<div class = "spinner" id = "loading" ng-show = "loading"><img src = "images/712.gif" alt= "loading..." id="spin"></div>
 <div class = "text-center">
   <h1>Transaction History</h1>
 </div>
