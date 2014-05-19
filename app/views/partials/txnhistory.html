@@ -1,0 +1,25 @@
+<div ng-include="'partials/navbar'"></div>
+<div class = "text-center">
+  <h1>Transaction History</h1>
+</div>
+<div class = "text-center">
+  <label for ="displayCode">Display In:<input type="text" ng-model="displayCode" placeholder="" typeahead="currency as currency.code for currency in currencys | filter:{code:$viewValue}" class="form-control" typeahead-on-select = "change(displayCode)">
+  </div>
+<table class = "table table-striped">
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Type</th>
+    <th>Details</th>
+    <th>Amount in {{displayCode.code}}</th>
+  </tr>
+  <tbody ng-repeat = "history in txnHistory">
+    <tr>
+      <td>{{history.date | date: 'MM/dd/yyyy'}}</td>
+      <td>{{history.type}}</td>
+      <td>{{history.details}}</td>
+      <td>{{displaySymbol}}{{history.amount | convertFilter:displayCode | number:2}}</td>
+    </tr>
+  </tbody>
+</table>
+

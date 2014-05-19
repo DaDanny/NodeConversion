@@ -73,6 +73,12 @@ body {
   padding: 14px 24px;
 }
 
+.gridStyle {
+  border: 1px solid rgb(212,212,212);
+  width:400px;
+  height:300px;
+}
+
 /* Supporting marketing content */
 .marketing {
   margin: 40px 0;

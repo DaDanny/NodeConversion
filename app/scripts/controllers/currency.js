@@ -26,8 +26,8 @@ angular.module('payPalNodeApp')
     ** And displays the conversion calculator
     */
     $scope.getUpdated = function(){
-      console.log('Get Updated');
       $scope.loading = true;
+      $scope.showConversion = false;
       Currencyservice.getConversion()
         .then(function(data){
           $scope.loading = false;
@@ -44,17 +44,30 @@ angular.module('payPalNodeApp')
     ** Which returns old exchange rates from DB
     ** Once it recieves data, updates scope
     */
-    $scope.fromDB = function(){
-      console.log('From DB');
-      Currencyservice.fromDB()
+    Currencyservice.fromDB()
         .then(function(data){
           $scope.currencys = data;
-          $scope.startConvert = true;
           $scope.updatedAt = new Date(data[0].updatedTime*1000);
         },function(error){
           $scope.currencys = 'failed';
-        });
+    });
+
+    /*
+    ** Use Local Values of EX Rates
+    */
+    $scope.fromDB = function(){
+      $scope.showConversion = false;
+      $scope.startConvert = true;
     };
+    
+
+    /*
+    ** Function that will hide any 
+    ** conversions if we change Currency Code
+    */
+    $scope.hide = function(){
+      $scope.showConversion = false;
+    }
 
     /*
     ** Takes in 2 currencies to convert with

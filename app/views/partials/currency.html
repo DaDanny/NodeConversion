@@ -18,15 +18,15 @@
 <form class = "form-horizontal col-xs-6" role = "form" data-ng-submit = "conversion(currency1,currency2, convertAmount)" ng-show="startConvert">
 
   <div class = "form-group">
-  <label for ="convertAmount">Amount: <input type = "text" ng-model = "convertAmount" class = "form-control">
+  <label for ="convertAmount">Amount: <input type = "text" ng-model = "convertAmount" class = "form-control" ng-change = "hide()">
   </div>
 
   <div class = "form-group">
-  <label for ="currency1">From: <input type="text" ng-model="currency1" placeholder="From" typeahead="currency as currency.code for currency in currencys | filter:{code:$viewValue}" class="form-control">
+  <label for ="currency1">From: <input type="text" ng-model="currency1" placeholder="From" typeahead="currency as currency.code for currency in currencys | filter:{code:$viewValue}" class="form-control" ng-change = "hide()">
   </div>
 
   <div class = "form-group">
-  <label for = "currency2">To: <input type="text" ng-model="currency2" placeholder="To" typeahead="currency as currency.code for currency in currencys | filter:{code:$viewValue}" class="form-control">
+  <label for = "currency2">To: <input type="text" ng-model="currency2" placeholder="To" typeahead="currency as currency.code for currency in currencys | filter:{code:$viewValue}" class="form-control" ng-change = "hide()">
   </div>
 
   <div class = "form-group">
@@ -34,7 +34,7 @@
   </div>
 
   <h4 ng-show = "showConversion">
-  {{convertAmount}} in {{currency1.symbol}} {{currency1.code}} is equal to {{currency2.symbol}} {{converted}} in {{currency2.code}}
+  {{currency1.symbol}}{{convertAmount}} in {{currency1.code}} is equal to {{currency2.symbol}} {{converted | number:2}} in {{currency2.code}}
   </h4>
 </form>
 
@@ -49,7 +49,7 @@
   <br>
   <h6 ng-repeat = "currency in currencys |orderBy: currency.code"collapse = "showCurrency">
     <br>
-    {{currency.code}}  {{currency.symbol}} {{currency.conversion}} 
+    {{currency.code}}  {{currency.symbol}} {{currency.conversion | number:2}} 
     <hr>
   </h6>
 </div>
