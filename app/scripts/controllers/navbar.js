@@ -8,7 +8,7 @@ angular.module('payPalNodeApp')
     },
     {
       'title': 'Currency',
-      'link' : '/Currency'
+      'link' : '/paypal/currencyConversion'
     }];
     
     $scope.isActive = function(route) {

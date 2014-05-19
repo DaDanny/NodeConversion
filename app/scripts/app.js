@@ -13,7 +13,7 @@ angular.module('payPalNodeApp', [
         templateUrl: 'partials/main',
         controller: 'MainCtrl'
       })
-      .when('/Currency', {
+      .when('/paypal/currencyConversion', {
         templateUrl: 'partials/currency',
         controller: 'CurrencyCtrl'
       })

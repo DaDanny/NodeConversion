@@ -1,18 +1,57 @@
 <div ng-include="'partials/navbar'"></div>
-<p>This is the Currency view.</p>
-
 
 
 <br>
+<div class = "span7 text-center">
+  <button class = "btn btn-success" ng-click = "getUpdated()">Latest Conversion Rates</button>
+  <button class = "btn btn-info" ng-click = "fromDB()">From Local Database </button>
+  <br>
+  <em>(Last Update: {{updatedAt | date: 'medium'}})</em>
+</div>
+
+
+
+<div class = "spinner" id = "loading" ng-show = "loading"><img src = "images/712.gif" alt= "loading..." id="spin"></div>
+
+
 <br>
-<div>
-  Convert : <input type = "text" ng-model = "convertAmount" class = "form-control">
-  Currency Code: <input type="text" ng-model="convertFrom" placeholder="Custom template" typeahead="currency.code as currency.code for currency in currencys | filter:{code:$viewValue}" class="form-control">
+<form class = "form-horizontal col-xs-6" role = "form" data-ng-submit = "conversion(currency1,currency2, convertAmount)" ng-show="startConvert">
+
+  <div class = "form-group">
+  <label for ="convertAmount">Amount: <input type = "text" ng-model = "convertAmount" class = "form-control">
+  </div>
+
+  <div class = "form-group">
+  <label for ="currency1">From: <input type="text" ng-model="currency1" placeholder="From" typeahead="currency as currency.code for currency in currencys | filter:{code:$viewValue}" class="form-control">
+  </div>
+
+  <div class = "form-group">
+  <label for = "currency2">To: <input type="text" ng-model="currency2" placeholder="To" typeahead="currency as currency.code for currency in currencys | filter:{code:$viewValue}" class="form-control">
+  </div>
+
+  <div class = "form-group">
+  <button type = "submit" class = "btn btn-success" >Convert!</button>
+  </div>
+
+  <h4 ng-show = "showConversion">
+  {{convertAmount}} in {{currency1.symbol}} {{currency1.code}} is equal to {{currency2.symbol}} {{converted}} in {{currency2.code}}
+  </h4>
+</form>
+
+
+
+
+<h1 ng-show= "startConvert">Currencies</h1>
+<div ng-show = "startConvert" class = "col-xs-6">
+
+  <button class = "btn btn-success" ng-click="showCurrency = !showCurrency" ng-show= "showCurrency">Show Currency</button>
+  <button class = "btn btn-warning" ng-click="showCurrency = !showCurrency" ng-show= "!showCurrency">Hide Currency</button>
+  <br>
+  <h6 ng-repeat = "currency in currencys |orderBy: currency.code"collapse = "showCurrency">
+    <br>
+    {{currency.code}}  {{currency.symbol}} {{currency.conversion}} 
+    <hr>
+  </h6>
 </div>
 
-  {{convertAmount}} in {{convertFrom}} to {{convertTo}} = {{converted}}
 
-<h1>Currencys</h1>
-<div ng-repeat = "currency in currencys |orderBy: currency.code">
-  {{currency.code}} : {{currency.symbol}} {{currency.conversion}} 
-</div>
